@@ -155,7 +155,6 @@ document.addEventListener("DOMContentLoaded", async function() {
             <p>Launch Date: ${launchInfo.date.slice(0, 10)}</p>
             <p>Success: ${launchInfo.success}</p>
             <p>Flight Number: ${launchInfo.flight_number}</p>
-            <p>Rocket: ${launchInfo.rocket}</p>
             <a href="${launchInfo.links.wikipedia}">Wikipedia</a>
             <iframe src="https://www.youtube.com/embed/${launchInfo.links.youtube_id}"></iframe>
             ${images.map((image) => 
