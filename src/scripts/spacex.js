@@ -9,6 +9,7 @@ async function spaceX(){
             // Parse the response as JSON
             const data = await response.json();
             // Return the parsed data
+            
             return data
         } else {
             // If response is not successful, throw an error
