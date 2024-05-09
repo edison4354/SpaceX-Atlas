@@ -21,7 +21,8 @@ document.addEventListener("DOMContentLoaded", async function() {
     const data = await spaceX();
     const launchData = await launch();
     
-    const gData = data.map(launchPad => ({
+    const gData = data.filter(launchPad => launchPad.id !== '5e9e4501f5090910d4566f83')
+    .map(launchPad => ({
         name: launchPad.name,
         lat: launchPad.latitude,
         lng: launchPad.longitude,
@@ -49,7 +50,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     }));
 
     // Initialize the Globe visualization on the 'globeViz' element
-    const globe = Globe();
+    const globe = new Globe();
 
     // Configure the Globe visualization with image URLs and data points
     globe(document.getElementById('globe-canvas'))
@@ -59,7 +60,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         .htmlElement(d => {
             const el = document.createElement('div');
             const img = document.createElement('img');
-            img.src = 'src/images/icons8-launchpad.svg';
+            img.src = 'src/images/launchpad.svg';
             img.style.width = `${d.size}px`;
             img.style.height = `${d.size}px`;
             el.appendChild(img);
@@ -69,9 +70,23 @@ document.addEventListener("DOMContentLoaded", async function() {
             el.style['pointer-events'] = 'auto';
             el.style.cursor = 'pointer';
             el.title = `${d.name}`
-            el.onclick = () => displayLaunchpadData(d);
+            el.onclick = () => {
+                // Sets all launchpad markers back to white
+                const otherEls = document.getElementById('globe-canvas').querySelectorAll('img')
+                otherEls.forEach((img) => {
+                    img.src = 'src/images/launchpad.svg'; 
+                })
+
+                img.src = 'src/images/launchpadRed.svg'; // Set selected launchpad marker to red
+                displayLaunchpadData(d)
+            };
             return el;
         })
+
+
+    globe.controls().autoRotate = true;
+    globe.controls().autoRotateSpeed = 0.5;
+
 
     function displayLaunchpadData(data) {
         const dataDiv = document.getElementById('launchpadData');
@@ -79,25 +94,29 @@ document.addEventListener("DOMContentLoaded", async function() {
 
 
         const html = `
-        <h2>${data.name}</h2>
-        <p class="fp">${data.full_name}</p>
-        <p class="sp">${data.region}</p>
-        <ul id="launch-stats-container">
-            <li class="launch-stats">
-                <p class="launch-nums">${data.launch_attempts}</p>
-                <label>No. of Rocket Launch</label>
-            </li>
-            <li class="launch-stats">
-                <p class="launch-nums">${data.launch_successes}</p>
-                <label>Success</label>
-            </li>
-            <li class="launch-stats">
-                <p class="launch-nums">${data.launch_fails}</p>
-                <label>Failure</label>
-            </li>
-        </ul>
-        <ul>${launchNames.map((launch) => `
-            <li class="launch-list" data-launch-id="${launch.id}">
+        <div class="div-head">
+            <h2>${data.name}</h2>
+            <p class="fp">${data.full_name}</p>
+            <p class="sp">${data.region}</p>
+            <ul id="launch-stats-container">
+                <li class="launch-stats">
+                    <p class="launch-nums">${data.launch_attempts}</p>
+                    <label>No. of Rocket Launch</label>
+                </li>
+                <li class="launch-stats">
+                    <p class="launch-nums">${data.launch_successes}</p>
+                    <label>Success</label>
+                </li>
+                <li class="launch-stats">
+                    <p class="launch-nums">${data.launch_fails}</p>
+                    <label>Failure</label>
+                </li>
+            </ul>
+        </div>
+        <ul class="launch-list">
+            <li class="launch-title">Launches</li>
+        ${launchNames.map((launch) => `
+            <li class="launch-item" data-launch-id="${launch.id}">
                 <img class="rocket" src="src/images/rocket.png">
                 ${launch.name}
             </li>`).join('')}
@@ -110,7 +129,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     // Event Delegation Technique
     document.addEventListener('click', function(event) {
-        if (event.target.classList.contains('launch-list')) {
+        if (event.target.classList.contains('launch-item')) {
           const launchId = event.target.dataset.launchId;
           displayLaunchData(launchId);
         }
@@ -123,17 +142,19 @@ document.addEventListener("DOMContentLoaded", async function() {
         const launchInfo = lData.filter((launch) => launch.id === launchId)[0]
         const images = launchInfo.links.flickr.original
 
-        console.log(images)
+        
         const html = `
             <h2>${launchInfo.name}</h2>
-            <p>${launchInfo.details}</p>
+            ${launchInfo.details ? `<p>${launchInfo.details}</p>` : ''}
             <p>Launch Date: ${launchInfo.date.slice(0, 10)}</p>
             <p>Success: ${launchInfo.success}</p>
             <p>Flight Number: ${launchInfo.flight_number}</p>
             <p>Rocket: ${launchInfo.rocket}</p>
-            <a href="${launchInfo.links.webcast}"><img src="src/images/youtube.png"></a>
-            <iframe src="${launchInfo.links.webcast}"></iframe>
-            <p>Wikipedia: ${launchInfo.links.wikipedia}</p>
+            <a href="${launchInfo.links.wikipedia}">Wikipedia</a>
+            <iframe src="https://www.youtube.com/embed/${launchInfo.links.youtube_id}"></iframe>
+            ${images.map((image) => 
+                `<img class="launchImg" src="${image}" alt="Launch Image">`).join('')
+            }
         `
 
         launchDataDiv.innerHTML = html

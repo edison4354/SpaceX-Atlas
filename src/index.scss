@@ -22,7 +22,7 @@ body, html {
 #modal {
     width: 700px;
     height: 500px;
-    background: rgba(255, 255, 255, 0.1); /* Glass background color with opacity */
+    background: rgba(180, 180, 180, 0.1); /* Glass background color with opacity */
     backdrop-filter: blur(2px) contrast(1); /* Apply blur effect */
     border-radius: 10px;
     left: 100px;
@@ -55,15 +55,15 @@ body, html {
 }
 
 .glassmorphism {
-    width: 350px;
-    height: 650px;
-    background: rgba(255, 255, 255, 0.1); /* Glass background color with opacity */
+    width: 390px;
+    height: 690px;
+    background: rgba(180, 180, 180, 0.1); /* Glass background color with opacity */
     backdrop-filter: blur(2px) contrast(1); /* Apply blur effect */
     border-radius: 10px;
     position: absolute;
     z-index: 1;
-    left: 100px;
-    top: 105.5px;
+    left: 80px;
+    top: 120px;
     // transform: translateY(-50%); /* Pushes up this element by half its height */
     color: white;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
@@ -74,58 +74,66 @@ body, html {
     display: none;
 }
 
-#launchData {
-    width: 350px;
-    height: 650px;
-    background: rgba(255, 255, 255, 0.1); /* Glass background color with opacity */
-    backdrop-filter: blur(2px) contrast(1); /* Apply blur effect */
-    border-radius: 10px;
-    position: absolute;
-    z-index: 1;
-    right: 100px;
-    top: 105.5px;
-    // transform: translateY(-50%); /* Pushes up this element by half its height */
-    color: white;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-    box-shadow: 0 15px 32px 0 rgba(21, 27, 116, 0.4);
-    overflow-y:auto;
-    flex-direction: column;
-    align-items: center;
-    display: none;
+.div-head {
+    padding: 15px;
+    width: 100%;
 }
 
 h2 {
     color: white; 
-    margin-bottom: 0;
+    margin-bottom: 15px;
     text-align: center;
     font: 1.7em/1.618 Inter, sans-serif;
+    font-weight: bold;
 }
 
 .fp {
-    margin-top: 0;
     font-size: 20px;
     text-align: center;
+    margin-bottom: 10px;
 }
 
 .sp {
     color: #666;
     font-size: 18px;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
-ul {
-    list-style: none; 
-    padding: 0; 
-    margin: 0;
+.launch-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: rgba(97, 130, 227, 0.3);
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .launch-list {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    margin-bottom: 10px;
-    margin-left: 30px;
-    font: 1em/1.618 Inter, sans-serif;
+    list-style: none; 
+    padding: 0; 
+    width: 100%;
+    margin-top: 16px;
+    border-top: 1px solid rgba( 255, 255, 255, 0.18);
 }
+
+.launch-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+
+.launch-item:nth-child(odd) {
+    background-color: rgba(227, 227, 227, 0.2); /* or any other color you prefer */
+}
+
+.launch-item:hover {
+    cursor: pointer;
+  }
+  
 
 .rocket {
     width: 21px;
@@ -144,6 +152,60 @@ ul {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+#launchData {
+    width: 350px;
+    height: 650px;
+    background: rgba(180, 180, 180, 0.1); /* Glass background color with opacity */
+    backdrop-filter: blur(2px) contrast(1); /* Apply blur effect */
+    border-radius: 10px;
+    position: absolute;
+    z-index: 1;
+    right: 80px;
+    top: 120px;
+    // transform: translateY(-50%); /* Pushes up this element by half its height */
+    color: white;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    box-shadow: 0 15px 32px 0 rgba(21, 27, 116, 0.4);
+    overflow-y:auto;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    padding: 20px;
+}
+
+#launchData h2 {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+  
+#launchData p {
+    margin-bottom: 20px;
+    text-align: center;
+}
+  
+#launchData iframe {
+    width: 100%;
+    height: 300px;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+  
+#launchData a {
+    text-decoration: none;
+    color: #337ab7;
+    margin-bottom: 20px;
+}
+  
+#launchData .launchImg {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .show-title {
@@ -173,7 +235,7 @@ ul {
 
     100% {
         transform: translate(0, 0);
-        width: 350px;
-        height: 650px;
+        width: 390px;
+        height: 690px;
     }
 }
