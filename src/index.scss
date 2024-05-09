@@ -4,6 +4,7 @@ body, html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: Inter, sans-serif;
 }
 
 #modal-container {
@@ -66,7 +67,27 @@ body, html {
     // transform: translateY(-50%); /* Pushes up this element by half its height */
     color: white;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
-    box-shadow: 0 8px 32px 0 rgba(21, 27, 116, 0.4);
+    box-shadow: 0 15px 32px 0 rgba(21, 27, 116, 0.4);
+    overflow-y:auto;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+}
+
+#launchData {
+    width: 350px;
+    height: 650px;
+    background: rgba(255, 255, 255, 0.1); /* Glass background color with opacity */
+    backdrop-filter: blur(2px) contrast(1); /* Apply blur effect */
+    border-radius: 10px;
+    position: absolute;
+    z-index: 1;
+    right: 100px;
+    top: 105.5px;
+    // transform: translateY(-50%); /* Pushes up this element by half its height */
+    color: white;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    box-shadow: 0 15px 32px 0 rgba(21, 27, 116, 0.4);
     overflow-y:auto;
     flex-direction: column;
     align-items: center;
@@ -97,7 +118,7 @@ ul {
     margin: 0;
 }
 
-li {
+.launch-list {
     display: flex;
     justify-content: left;
     align-items: center;
@@ -109,6 +130,20 @@ li {
 .rocket {
     width: 21px;
     padding-right: 5px;
+}
+
+#launch-stats-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.launch-stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .show-title {
