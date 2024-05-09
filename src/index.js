@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     const modal = document.getElementById("modal-container");
     const div = document.getElementById("launchpadData");
     const title = document.getElementById("target-title");
+    const intructions = document.getElementById("instructions")
 
     modalClose.addEventListener('click', function() {
         modal.style.display = "none";
@@ -15,6 +16,9 @@ document.addEventListener("DOMContentLoaded", async function() {
         div.classList.add("show-div")
         title.style.display = "flex"
         title.classList.add("show-title")
+        setTimeout(function() {
+            intructions.style.display  = "block";
+        }, 1900);
     })
 
     // Fetch data from the spaceX function asynchronously
@@ -78,6 +82,8 @@ document.addEventListener("DOMContentLoaded", async function() {
                 })
 
                 img.src = 'src/images/launchpadRed.svg'; // Set selected launchpad marker to red
+                intructions.style.display  = "none";
+                div.style.justifyContent = "start";
                 displayLaunchpadData(d)
             };
             return el;
