@@ -6,7 +6,7 @@
 
 ### In **SpaceX Atlas** users will be able to:
 
-* **Interactive 3D Globe**: Explore a interactive 3D globe
-* **Launchpad Markers**: Click on markers where launchpads are located
-* **Launchpad Details**: Display detailed information and statistics on selected launchpad
-* **Launch History**: View a all launches from a selected launchpad
+* **Interactive 3D Globe:** This feature allows users to explore a 3D globe.
+* **Launchpad Markers:** Users can click on markers where launchpads are located.
+* **Launchpad Details:** This feature displays detailed information and statistics on selected launchpad.
+* **Launch History:** Users can view all launches from a selected launchpad.
