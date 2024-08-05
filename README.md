@@ -13,6 +13,14 @@
 * **Launchpad Details:** This feature displays detailed information and statistics on selected launchpad.
 * **Launch History:** Users can view all launches from a selected launchpad.
 
+![Demo](images/Demo.gif)
+
 ## Wireframes
 ![Screenshot 2024-05-09 at 11 57 57 AM](https://github.com/edison4354/launchpad-tracker/assets/47466335/dcdd1017-7490-4595-9dbf-d0452c74959b)
 ![Screenshot 2024-05-09 at 11 55 39 AM](https://github.com/edison4354/launchpad-tracker/assets/47466335/2f25f0a9-b2fa-4edf-b180-4f8376bca388)
+
+## Technologies, Libraries, APIs
+This project is implemented iwth the folowing technologies:
+
+* [SpaceX API](https://github.com/r-spacex/SpaceX-API): An API providing data about SpaceX launches, rockets, and other related information.
+* [Globe.gl](https://globe.gl/): UI component for Globe Data Visualization using ThreeJS/WebGL
