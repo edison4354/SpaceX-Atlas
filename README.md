@@ -32,6 +32,42 @@ This project is implemented with the folowing technologies:
 
 ## Code Snippets
 
+*  Asynchronously fetch data about SpaceX launchpads from the SpaceX API. Includes error handling to log any issues that occur during the fetch or parsing process. Maps the fetched data into a format suitable for use in a globe visualization. This processed data (gData) can then be used to visualize the launchpads on the 3D globe, with interactive markers representing each launchpad.
+
+    ```javascript
+    async function spaceX() {
+        try {
+            const response = await fetch('https://api.spacexdata.com/v4/launchpads');
+
+            if (response.ok) {
+                const data = await response.json();
+                return data;
+            } else {
+                throw response;
+            }
+        } catch (errorResponse) {
+            console.error(errorResponse);
+        }
+    }
+
+    const data = await spaceX();
+
+    const gData = data.map(launchPad => ({
+        name: launchPad.name,
+        lat: launchPad.latitude,
+        lng: launchPad.longitude,
+        size: 30,
+        full_name: launchPad.full_name,
+        region: launchPad.region,
+        image: launchPad.images.large[0],
+        id: launchPad.id,
+        launches: launchPad.launches,
+        launch_attempts: launchPad.launch_attempts,
+        launch_successes: launchPad.launch_successes,
+        launch_fails: launchPad.launch_attempts - launchPad.launch_successes
+    }));
+    ```
+
 * Implement a 3D globe visualization with interactive markers representing launchpads. When a marker is clicked, it changes color, hides instruction modal, adjusts the layout, and displays additional data about the selected launchpad. The globe.gl library is used to render the globe and manage the data points, while standard HTML and JavaScript are used to create and style the interactive elements.
     ```javascript
     const globe = new Globe();
@@ -67,9 +103,5 @@ This project is implemented with the folowing technologies:
             };
             return el;
         })
-    ```
-
-* Fetch data about SpaceX launchpads from the SpaceX API, process the data, and map it into a format suitable for use in a globe visualization.
-    ```javascript
     ```
 
