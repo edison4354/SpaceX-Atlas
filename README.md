@@ -32,8 +32,10 @@ This project is implemented with the folowing technologies:
 
 ## Code Snippets
 
-* Implenmention of globe.gl ui component
+* Implement a 3D globe visualization with interactive markers representing launchpads. When a marker is clicked, it changes color, hides instruction modal, adjusts the layout, and displays additional data about the selected launchpad. The globe.gl library is used to render the globe and manage the data points, while standard HTML and JavaScript are used to create and style the interactive elements.
     ```javascript
+    const globe = new Globe();
+
     globe(document.getElementById('globe-canvas'))
         .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
         .backgroundImageUrl('//unpkg.com/three-globe/example/img/night-sky.png')
@@ -65,5 +67,9 @@ This project is implemented with the folowing technologies:
             };
             return el;
         })
+    ```
+
+* Fetch data about SpaceX launchpads from the SpaceX API, process the data, and map it into a format suitable for use in a globe visualization.
+    ```javascript
     ```
 
