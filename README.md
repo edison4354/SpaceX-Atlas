@@ -63,7 +63,7 @@ This project is implemented with the folowing technologies:
                 div.style.justifyContent = "start";
                 displayLaunchpadData(d)
             };
-                return el;
-            })
+            return el;
+        })
     ```
 
