@@ -1,6 +1,6 @@
 # SpaceX Atlas
 
-[SpaceX Atlas](https://edison4354.github.io/launchpad-tracker/) is an interactive 3D globe that allows users to explore SpaceX launchpad locations around the world. The project aims to provide a comprehensive and immersive experience for users to learn about space exploration, launchpads, and rocket launches.
+[SpaceX Atlas](https://edison4354.github.io/SpaceX-Atlas/) is an interactive 3D globe that allows users to explore SpaceX launchpad locations around the world. The project aims to provide a comprehensive and immersive experience for users to learn about space exploration, launchpads, and rocket launches.
 
 ![Landing Page](images/Homepage.png)
 
