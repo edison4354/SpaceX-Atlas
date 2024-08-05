@@ -34,35 +34,35 @@ This project is implemented with the folowing technologies:
 
 * Implenmention of globe.gl ui component
     ```javascript
-        globe(document.getElementById('globe-canvas'))
-            .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
-            .backgroundImageUrl('//unpkg.com/three-globe/example/img/night-sky.png')
-            .htmlElementsData(gData)
-            .htmlElement(d => {
-                const el = document.createElement('div');
-                const img = document.createElement('img');
-                img.src = 'src/images/launchpad.svg';
-                img.style.width = `${d.size}px`;
-                img.style.height = `${d.size}px`;
-                el.appendChild(img);
+    globe(document.getElementById('globe-canvas'))
+        .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+        .backgroundImageUrl('//unpkg.com/three-globe/example/img/night-sky.png')
+        .htmlElementsData(gData)
+        .htmlElement(d => {
+            const el = document.createElement('div');
+            const img = document.createElement('img');
+            img.src = 'src/images/launchpad.svg';
+            img.style.width = `${d.size}px`;
+            img.style.height = `${d.size}px`;
+            el.appendChild(img);
 
-                el.style.width = `${d.size}px`;
-            
-                el.style['pointer-events'] = 'auto';
-                el.style.cursor = 'pointer';
-                el.title = `${d.name}`
-                el.onclick = () => {
-                    // Sets all launchpad markers back to white
-                    const otherEls = document.getElementById('globe-canvas').querySelectorAll('img')
-                    otherEls.forEach((img) => {
-                        img.src = 'src/images/launchpad.svg'; 
-                    })
+            el.style.width = `${d.size}px`;
+        
+            el.style['pointer-events'] = 'auto';
+            el.style.cursor = 'pointer';
+            el.title = `${d.name}`
+            el.onclick = () => {
+                // Sets all launchpad markers back to white
+                const otherEls = document.getElementById('globe-canvas').querySelectorAll('img')
+                otherEls.forEach((img) => {
+                    img.src = 'src/images/launchpad.svg'; 
+                })
 
-                    img.src = 'src/images/launchpadRed.svg'; // Set selected launchpad marker to red
-                    intructions.style.display  = "none";
-                    div.style.justifyContent = "start";
-                    displayLaunchpadData(d)
-                };
+                img.src = 'src/images/launchpadRed.svg'; // Set selected launchpad marker to red
+                intructions.style.display  = "none";
+                div.style.justifyContent = "start";
+                displayLaunchpadData(d)
+            };
                 return el;
             })
     ```
