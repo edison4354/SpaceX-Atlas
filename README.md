@@ -24,10 +24,10 @@ This project is implemented with the folowing technologies:
 * [SpaceX API](https://github.com/r-spacex/SpaceX-API): Open Source REST API for SpaceX launch, rocket, core, capsule, starlink, launchpad, and landing pad data.
 * [Globe.gl](https://globe.gl/): UI component for Globe Data Visualization using ThreeJS/WebGL.
 * JavaScript: The primary language used for the front-end.
-* HTML: Markup language for structuring the web pages.
-* CSS: Styling language for designing the web pages.
+* HTML: Markup language for structuring the web page.
+* CSS: Styling language for designing the web page.
 * npm (Node Package Manager): Used for managing project dependencies.
-* Webpack: A module bundler for JavaScript applications.
+* Webpack: A module bundler for JavaScript.
 * Babel: A JavaScript compiler.
 
 ## Code Snippets
